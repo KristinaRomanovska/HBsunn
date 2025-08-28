@@ -1,0 +1,34 @@
+
+/* Simple fullscreen overlay */
+#countdown-overlay {
+  position: fixed;
+  inset: 0;
+  display: none; /* default hidden; JS decides */
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.9);
+  z-index: 9999;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  backdrop-filter: blur(2px);
+}
+#countdown-overlay.show { display: flex; }
+.countdown-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.countdown-card h1 { margin: 0 0 0.5rem 0; font-size: 2rem; }
+.date-line { opacity: 0.9; margin: 0 0 1rem 0; }
+.timer {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  letter-spacing: 1px;
+  margin: 0.5rem 0 0.25rem 0;
+}
+.subtext { opacity: 0.8; margin-top: 0.75rem; }
+.no-scroll { overflow: hidden; height: 100vh; }

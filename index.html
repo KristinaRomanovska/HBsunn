@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>З Днем народження, Кицюнчик!</title>
+<meta content="" name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&amp;family=Pacifico&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet">
+</link><link href="countdown/countdown.css" rel="stylesheet"/></head>
+<body>
+<div aria-live="polite" aria-modal="true" id="countdown-overlay" role="dialog">
+<div class="countdown-card">
+<h1>Сюрприз відкриється скоро 🎉</h1>
+<p class="date-line">Відкриття: 29 серпня, 00:00</p>
+<div class="timer" data-target="2025-08-29T00:00:00" id="countdown-timer"></div>
+<p class="subtext">Зачекай трішки — залишилось зовсім небагато 💛</p>
+</div>
+</div>
+
+<canvas aria-hidden="true" id="starfield"></canvas>
+<canvas aria-hidden="true" id="confettiCanvas"></canvas>
+<header class="topbar">
+<nav class="container">
+<a class="logo" href="#hero">✨</a>
+<ul>
+<li><a href="#wishes">Побажання</a></li>
+<li><a href="#game">Міні-гра</a></li>
+<li><a href="#gallery">Галерея</a></li>
+<li><a href="#letter">Лист</a></li>
+</ul>
+<div class="actions">
+<button aria-label="Перемкнути неоновий режим" class="ghost" id="themeBtn">⚡</button>
+</div>
+</nav>
+</header>
+<section class="hero" id="hero">
+<div aria-hidden="true" class="hero-bg"></div>
+<div class="container hero-inner">
+<h1 class="title">
+<span class="script">З Днем народження,</span><br/>
+<span class="gradient">котя</span>!
+      </h1>
+<p class="typed" data-text="Натисни «Святкувати!» — і неонове свято почнеться. Тут є побажання, гра, галерея та секретний лист ❤️" id="typed"></p>
+<div class="cta">
+<button class="primary" id="celebrateBtn">🎉 Тикайййй сюди</button>
+<a class="secondary" href="#game">🎮 Піти в гру</a>
+</div>
+</div>
+</section>
+<section class="section container" id="wishes">
+<h2 class="section-title">Побажання для тебе</h2>
+<div class="cards">
+<div class="card flip">
+<div class="card-inner">
+<div class="card-front">💜</div>
+<div class="card-back">Хай у твоєму серці завжди живе тепло, а я зроблю все, щоб його вистачало.</div>
+</div>
+</div>
+<div class="card flip">
+<div class="card-inner">
+<div class="card-front">🌟</div>
+<div class="card-back">Бажаю тобі мріяти сміливо й ніколи не сумніватися, бо ти заслуговуєш на найкраще.</div>
+</div>
+</div>
+<div class="card flip">
+<div class="card-inner">
+<div class="card-front">🍰</div>
+<div class="card-back">Ти робиш мій світ красивішим — нехай і твій буде наповнений красою та любов’ю.</div>
+</div>
+</div>
+<div class="card flip">
+<div class="card-inner">
+<div class="card-front">🚀</div>
+<div class="card-back">Хай кожен день нагадує тобі, наскільки ти особлива для мене.</div>
+</div>
+</div>
+<div class="card quote">
+<p>«Твій сміх — мій улюблений саундтрек»</p>
+</div>
+</div>
+<div class="surprise">
+<button class="secondary" id="starsQuestBtn">⭐ Зібрати зорі-побажання</button>
+<p class="hint" id="questHint">Збери 7 сяючих зірок на сторінці — і отримаєш секрет!</p>
+</div>
+</section>
+<section class="section alt" id="game">
+<div class="container">
+<h2 class="section-title">Міні-гра: «Фіолетове полювання»</h2>
+<p class="center">Рухай кільце мишею або пальцем та лови фіолетові серця. Маєш 30 секунд. Набери 30 балів — і буде феєрверк!</p>
+<div class="game-wrap">
+<canvas height="540" id="gameCanvas" width="900"></canvas>
+<div class="hud">
+<span>⏱ <strong id="time">30</strong> с</span>
+<span>💎 Очки: <strong id="score">0</strong></span>
+<button class="primary small" id="startGame">Старт</button>
+</div>
+</div>
+<div class="win hidden" id="winMessage">
+<h3>Вітаю! Ти чемпіонка 💜</h3>
+<p>Твоя нагорода — салют, конфеті й маленький секрет у розділі «Лист» 😉</p>
+</div>
+</div>
+</section>
+<section class="section container" id="gallery">
+<h2 class="section-title">Що за Афродіта?!</h2>
+<p class="center"> <code></code></p>
+<div class="grid" id="galleryGrid"></div>
+<div aria-modal="true" class="lightbox hidden" id="lightbox" role="dialog">
+<img alt="Перегляд фото" id="lightboxImg"/>
+<button aria-label="Закрити" class="ghost large" id="closeLightbox">✕</button>
+</div>
+</section>
+<section class="section alt" id="letter">
+<div class="container letter-wrap">
+<h2 class="section-title">Секретний лист</h2>
+<p class="center">Натисни, щоб відкрити. (краще після перемоги в грі 😉)</p>
+<button class="primary" id="openLetter">💌 Відкрити лист</button>
+<div aria-modal="true" class="modal hidden" id="letterModal" role="dialog">
+<div class="modal-card">
+<button aria-label="Закрити" class="ghost close" id="closeLetter">✕</button>
+<h3>Для кицюнчика</h3>
+<div class="letter-text" data-text="Ти неймовірна. Дякую, що робиш світ яскравішим. Хай сьогодні все буде так, як ти хочеш. Обіцяю підтримувати, дивувати і сміятись разом. З Днем народження! PS: Ти виграла гру — отже, бажання точно здійснюються ✨ Також ти знайшла зорі, тож нехай вони завжди ведуть тебе до мрій." id="letterText"></div>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="container">
+<p>З любов’ю зроблено спеціально для тебе 💜</p>
+<button class="ghost small" id="doNotPress">Не натискати</button>
+</div>
+</footer>
+<!-- Фото для галереї (перед основним скриптом, чтобы он успел подхватить пути) -->
+<script>
+    window.GALLERY_IMAGES = [
+      'images/img1.JPG',
+      'images/img2.jpg',
+      'images/img3.jpg'
+    ];
+  </script>
+<script src="script.js"></script><script defer="True" src="countdown/countdown.js"></script></body>
+</html>
